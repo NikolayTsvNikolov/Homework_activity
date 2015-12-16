@@ -17,11 +17,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button btn_final;
     private TextView txt_info;
-    private EditText txt_fn;
-    private EditText txt_ln;
-    private EditText txt_age;
-    private EditText txt_add;
-    private EditText txt_town;
     String info;
 
     @Override

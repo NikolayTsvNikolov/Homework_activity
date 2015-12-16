@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private EditText txt_fn;
-    private EditText txt_ln;
     private Button btn_enter;
     public String name;
     @Override
@@ -22,10 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txt_fn = (EditText) findViewById(R.id.txt_first_name);
-        txt_ln = (EditText) findViewById(R.id.txt_last_name);
         btn_enter = (Button) findViewById(R.id.btn_enter);
         btn_enter.setOnClickListener(this);
-        name = txt_fn.getText().toString().concat(txt_ln.getText().toString());
     }
 
 
@@ -33,11 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (txt_fn.getText().toString().isEmpty()) {
             txt_fn.setError("Въведете правилно име");
-        } else if (txt_ln.getText().toString().isEmpty()) {
-            txt_ln.setError("Въведете правилно име");
         } else {
             Intent details = new Intent(this, DetailsActivity.class);
-            details.putExtra("name",txt_fn.getText().toString().concat(txt_ln.getText().toString()));
+            details.putExtra("name",txt_fn.getText().toString());
             startActivity(details);
         }
     }
