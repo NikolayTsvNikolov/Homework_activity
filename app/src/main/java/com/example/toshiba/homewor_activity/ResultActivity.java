@@ -2,12 +2,15 @@ package com.example.toshiba.homewor_activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.net.URI;
 
 /**
  * Created by toshiba on 7.12.2015 г..
@@ -17,7 +20,11 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button btn_final;
     private TextView txt_info;
-    String info;
+    String name;
+    String age;
+    String address;
+    String town;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +34,25 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         btn_final = (Button) findViewById(R.id.btn_show_address);
         btn_final.setOnClickListener(this);
         Intent result = getIntent();
-        Intent details = getIntent();
-        info = result.getExtras().getString("add");
-        txt_info.setText(info);
+        name = result.getExtras().getString("Name");
+        age = result.getExtras().getString("Age");
+        address = result.getExtras().getString("Address");
+        town = result.getExtras().getString("Town");
+        txt_info.setText(name + ", " + age + ", " + "\n" +
+                address + ", " + "\n" + "Град" + town);
+
+
 
     }
 
 
+
     @Override
     public void onClick(View v) {
-
+        Uri locationUri = Uri.parse("geo:0,0?q=" + Uri.encode(address + " " + town));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, locationUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 }
 

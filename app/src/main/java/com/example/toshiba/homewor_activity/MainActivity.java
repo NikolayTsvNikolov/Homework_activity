@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txt_fn.setError("Въведете правилно име");
         } else {
             Intent details = new Intent(this, DetailsActivity.class);
-            details.putExtra("name",txt_fn.getText().toString());
+            details.putExtra("Name",txt_fn.getText().toString());
             startActivity(details);
         }
     }

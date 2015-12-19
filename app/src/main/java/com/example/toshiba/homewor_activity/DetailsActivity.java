@@ -31,9 +31,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         txt_bd = (EditText) findViewById(R.id.txt_birth_date);
         btn_continue = (Button) findViewById(R.id.btn_continue);
         btn_continue.setOnClickListener(this);
-        other_info = txt_age.getText().toString().concat(txt_add.getText().toString()).concat(txt_town.getText().toString());
-        Intent details = getIntent();
-        names = details.getExtras().getString("name");
+
     }
 
 
@@ -49,10 +47,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             txt_bd.setError("Въведете правилни данни");
         } else {
             Intent result = new Intent(this, ResultActivity.class);
-            result.putExtra("add", names.toString().concat(",")
-                    .concat(txt_age.getText().toString()).concat(",")
-                    .concat(txt_add.getText().toString()).concat(",")
-                    .concat(txt_town.getText().toString()));
+            Intent details = getIntent();
+            result.putExtra("Name", details.getExtras().getString("Name"));
+            result.putExtra("Age",txt_age.getText().toString());
+            result.putExtra("Address", txt_add.getText().toString());
+            result.putExtra("Town", txt_town.getText().toString());
             startActivity(result);
         }
 
