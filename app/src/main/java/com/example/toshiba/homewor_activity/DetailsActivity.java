@@ -38,18 +38,14 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (isDataValid(txt_age) == false) {
-            txt_age.setError("Въведете правилни данни");
         } else if (isDataValid(txt_add) == false) {
-            txt_add.setError("Въведете правилни данни");
         } else if (isDataValid(txt_town) == false) {
-            txt_town.setError("Въведете правилни данни");
         } else if (isDataValid(txt_bd) == false) {
-            txt_bd.setError("Въведете правилни данни");
         } else {
             Intent result = new Intent(this, ResultActivity.class);
             Intent details = getIntent();
             result.putExtra("Name", details.getExtras().getString("Name"));
-            result.putExtra("Age",txt_age.getText().toString());
+            result.putExtra("Age", txt_age.getText().toString());
             result.putExtra("Address", txt_add.getText().toString());
             result.putExtra("Town", txt_town.getText().toString());
             startActivity(result);

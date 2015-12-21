@@ -33,19 +33,20 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         txt_info = (TextView) findViewById(R.id.txt_info);
         btn_final = (Button) findViewById(R.id.btn_show_address);
         btn_final.setOnClickListener(this);
+        txt_info.setText(currentInfo());
+
+    }
+
+    public String currentInfo() {
         Intent result = getIntent();
         name = result.getExtras().getString("Name");
         age = result.getExtras().getString("Age");
         address = result.getExtras().getString("Address");
         town = result.getExtras().getString("Town");
-        txt_info.setText(name + ", " + age + ", " + "\n" +
-                address + ", " + "\n" + "Град" + town);
-
-
-
+        String currentInfo = name + ", " + age + ", " + "\n" +
+                address + ", " + "\n" + "Град" + " " + town;
+        return currentInfo;
     }
-
-
 
     @Override
     public void onClick(View v) {
